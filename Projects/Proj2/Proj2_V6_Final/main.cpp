@@ -25,12 +25,12 @@ using namespace std;
 void HorF (string [], string [], int &, int, bool, unsigned int &, int []);
 void selcSrt(int [], int );             //Selection sort function
 void bublSrt(int [], int );             //Bubble sort function
-bool linSrch(string [], int [], int [], int , int );
+bool linSrch(string [], int [], int [], int , int ); //Linear Search Function
 void printHand(int [], string [], int); //Prints player's hand
 bool checkAce (unsigned char &, bool , unsigned int &); //Player check ace function
 bool checkAce (unsigned char &, bool , int &);      //Dealer checkAce function 
-unsigned char rndmNum(unsigned char); 
-void dlrHnd (string [], string [], int [], int , bool, int &, int &, unsigned char=0);
+unsigned char rndmNum(unsigned char);  //Finds random number
+void dlrHnd (string [], string [], int [], int , bool, int &, int &, unsigned char=0); //Gets dealer's hand
 
 //Execution Begins Here
 int main(int argc, char** argv) {
@@ -44,8 +44,8 @@ int main(int argc, char** argv) {
         dlrhand,
         crdnms1[10],
         crdnms2[10];
-    unsigned int bet,
-                 hand=0;
+    unsigned int hand=0;
+    float bet;
     string allcards[nCards];
     string cards[nCards];
     string name;
@@ -66,7 +66,7 @@ int main(int argc, char** argv) {
         input>>cardIn;          //file is read in and assigns 
         allcards[i]=cardIn;     //all cards to array allcards
     }
-    cout<<allcards[0]<<endl;
+
     input.close();
 /****************************************************************************************************************/
     unsigned int grtng=rand()%6+1;
@@ -105,7 +105,7 @@ int main(int argc, char** argv) {
         ace=checkAce(rawnum, ace, hand);    //Checks to see if player has ace
         
         if (rawnum==0||rawnum==11||rawnum==12||rawnum==13) //Face cards equal 10
-            hand+=10; 
+            hand+=10;
         else if (rawnum==14)   //first ace card is worth 11
             hand+=11;
         else hand+=rawnum;  //every other card is assigned its number value
